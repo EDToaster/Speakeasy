@@ -14,10 +14,6 @@ vision_client = vision.ImageAnnotatorClient()
 speech_client = speech.SpeechClient()
 language_client = language.LanguageServiceClient()
 
-ln = ('UNKNOWN', 'VERY_UNLIKELY', 'UNLIKELY', 'POSSIBLE',
-      'LIKELY', 'VERY_LIKELY')
-
-
 @app.route('/images', methods=['POST'])
 def process_images():
 
@@ -28,13 +24,17 @@ def process_images():
     for file in files.values():
         print(file)
 
-        image = vision.types.Image(content=file.read())
+        content = file.read()
+
+        image = vision.types.Image(content=content)
 
         response = vision_client.face_detection(image=image)
+
 
         faces = response.face_annotations
 
         for face in faces:
+
             joy = face.joy_likelihood
             sorrow = face.sorrow_likelihood
             anger = face.anger_likelihood
