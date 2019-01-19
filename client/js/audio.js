@@ -29,7 +29,14 @@ function stopSendingPhotos() {
     clearInterval(interval);
 }
 
+function getSlidValue(){
+    var slider = document.getElementById("myRange");
+    console.log('slider '+  slider.value);
+    return (slider.value-50)/50;
+}
+
 function startRecording() {
+
     console.log("recordButton clicked");
     sendPhotos();
 
@@ -189,8 +196,10 @@ function sendAudio(blob) {
             console.log("Server returned: ", e.target.responseText);
             localStorage.setItem('responsedata', JSON.stringify({
                 audio: e.target.responseText,
-                images: emotions
+                images: emotions,
+                slider: getSlidValue(),
             }));
+            emotions = [];
 
             // localStorage.setItem('responsedata', "hello");
             var w = window.open('result.html');
