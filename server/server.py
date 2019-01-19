@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from google.cloud import vision
 from google.cloud.vision import types
 from PIL import Image, ImageDraw
@@ -17,6 +17,8 @@ def process_images():
 
     files = request.files.to_dict()
 
+    to_return = []
+
     for file in files.values():
         print(file)
 
@@ -32,9 +34,13 @@ def process_images():
             anger = face.anger_likelihood
             surprise = face.surprise_likelihood
 
-            print(f"{ln[joy]}, {ln[sorrow]}, {ln[anger]}, {ln[surprise]}")
+            print(f"{joy}, {sorrow}, {anger}, {surprise}")
 
-    return f"{len(files)} images received"
+            to_return.append({'filename': file.filename,
+                          'emotions': [joy, sorrow, anger, surprise]})
+            
+
+    return jsonify(to_return)
 
 
 @app.route('/audio', methods=['POST'])
