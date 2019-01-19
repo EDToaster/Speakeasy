@@ -4,81 +4,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-        <title>SpeakEasy</title>
-        <!-- Bootstrap core CSS -->
-        <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+    <title>SpeakEasy</title>
+    <!-- Bootstrap core CSS -->
+    <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
 
-        <!-- Custom styles for this template -->
-        <link href="css/style.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
-            integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+        integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
 
 </head>
 
 
 <body id="page-top">
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="#page-top">Speech Helper</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-                    </li>
-                </ul>
+    <div class="bigdiv">
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger" href="#page-top">Speech Helper</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
 
-    <div>
-    <!-- page division -->
-    <div style="width:100%;">
-        <div id="col1" class="container column bg-primary text-white">
 
-            <h2>
-                <br></br>
+        <!-- page division -->
+        <div id="nonfootdiv">
+            <div id="col1" class="bg-primary text-white innercol">
+                <div class="innercol-text">
+                    <h2>
+                        Off Target
+                    </h2>
+                </div>
+                <p id="offtarget"></p>
+                <div class="innercol-text">
+                        <h2>
+                            All Sentences
+                        </h2>
+                    </div>
 
-                <center>Off Target </center>
-            </h2>
-            <p id="offtarget"></p>
-            <h2>
-                <center>All Sentences</center>
-            </h2>
+                <p id="test"></p>
 
-            <p id="test"></p>
-
-        </div>
-        <div style="float:right; width:50%; height:100%" id="col2" class="container">
-            <div style="float: left">
-                <h2>
-                    <br></br>
-                    <center class="whitebg">
+            </div>
+            <div id="col2" class="innercol">
+                <div class="innercol-text">
+                    <h2>
                         Photo analysis
-                    </center>
-                </h2>
+                    </h2>
+                </div>
+
                 <div id="photos"></div>
-                <div id="plot" style="min-width: 750px"></div>
+                <div id="plot"></div>
+                <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+                <script src="results.js"></script>
             </div>
-            <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-
-            <script src="results.js"></script>
         </div>
-    </div>
 
 
-    <!-- <div style="float: left; min-width: 49%; max-width: 49%">
+        <!-- <div style="float: left; min-width: 49%; max-width: 49%">
                 <h2>Off Target: </h2>
                 <p id="offtarget"></p>
                 <h2>All Sentences: </h2>
@@ -101,11 +101,12 @@
 
         <!-- Footer -->
         <footer class="py-5 bg-dark">
-                <div class="container">
-                  <p class="m-0 text-center text-white">Copyright &copy; Speech Helper 2019</p>
-                </div>
-                <!-- /.container -->
-              </footer>
+            <div class="container">
+                <p class="m-0 text-center text-white">Copyright &copy; Speech Helper 2019</p>
+            </div>
+            <!-- /.container -->
+        </footer>
+    </div>
 
 
     <!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
