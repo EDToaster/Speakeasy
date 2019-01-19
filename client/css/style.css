@@ -67,3 +67,7 @@ video{
   background: #159588; /* Green background */
   cursor: pointer; /* Cursor on hover */
 }
+
+.bottom-space {
+    margin-bottom: 100px;
+}
