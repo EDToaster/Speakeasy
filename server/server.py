@@ -62,7 +62,7 @@ def process_audio():
         audio = speech.types.RecognitionAudio(content=file.read())
         config = speech.types.RecognitionConfig(
             encoding=speech.enums.RecognitionConfig.AudioEncoding.LINEAR16,
-            sample_rate_hertz=8000,
+            # sample_rate_hertz=8000,
             language_code='en-US'
         )
         response = speech_client.recognize(config, audio)
