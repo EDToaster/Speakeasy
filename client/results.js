@@ -24,9 +24,10 @@ let pics = info.images;
 let imageData = [];
 
 pics.forEach((pic) => {
-        let p = pic[0].emotions;
-        // document.getElementById('photos').innerHTML += p + '<br>';
-        imageData.push(p);
+        if ((pic !== [])) {
+            let p = pic[0].emotions;
+            imageData.push(p);
+        }
     }
 );
 
@@ -37,13 +38,13 @@ audio[0].filedata.forEach(snt => {
 
     let card = document.createElement("div");
     card.className = "card";
-    card.setAttribute("style", "margin-bottom: 15px;");
+    card.setAttribute("style", "margin-bottom: 15px; margin-left: 10px; margin-right: 10px");
 
     let body = document.createElement("div");
     body.className = "card-body";
 
     let content = document.createElement("div");
-    content.className = "tab-content";
+    content.className = "tab-content card-text text-dark";
     content.innerText = snt.sentence + "    " + (snt.score * snt.magnitude);
     body.setAttribute("style", colour_from_score(snt.score * snt.magnitude));
 
@@ -52,6 +53,8 @@ audio[0].filedata.forEach(snt => {
     document.getElementById('test').append(card);
     if (Math.abs(snt.score * snt.magnitude - info.slider) > 0.4) {
         let card2 = document.createElement("div");
+        card2.setAttribute("style", "margin-bottom: 15px; margin-left: 10px; margin-right: 10px");
+
         card2.className = "card";
         card2.innerHTML = card.innerHTML;
         document.getElementById('offtarget').append(card2);
@@ -73,8 +76,6 @@ function transpose(a) {
 
 function plot(input) {
     let na = Array.apply(null, {length: input.length}).map(Number.call, Number);
-    let transposed = transpose(input);
-
     var data = [];
     var names = ['Joy', 'Sorrow', 'Anger', 'Surprise'];
     // transposed.forEach((val, i) => {
@@ -89,7 +90,8 @@ function plot(input) {
     let posneg = [];
 
     input.forEach((val, i) => {
-        posneg.push((val[0] + val[4]) - (val[2] + val[3]));
+
+        posneg.push((val[0] + val[3]) - (val[2] + val[1]));
     });
 
     data.push({

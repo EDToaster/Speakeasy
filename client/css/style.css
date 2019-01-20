@@ -72,6 +72,60 @@ video{
     margin-bottom: 100px;
 }
 
+.row {
+  display: flex;
+}
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+#col1{
+  background: #159588;
+
+
+}
+
+#col2{
+}
+
+.whitebg{
+  color: #159588;
+}
+
+#nonfootdiv{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+}
+
+#page-top {
+  height: 100vh;
+  min-height: 100vh;
+}
+
+.bigdiv {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.innercol {
+  width: 50%;
+
+}
+.innercol-text {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.navbar {
+  position: sticky;
+  top: 0;
+}
+
 .alignleft {
   float: left;
   width:33.33333%;

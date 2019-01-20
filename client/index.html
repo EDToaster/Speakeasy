@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Speech Helper</title>
+    <title>SpeakEasy</title>
 
     <!-- Bootstrap core CSS -->
     <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
@@ -68,7 +68,7 @@
             <div id="controls">
                 <button id="recordButton" >Record</button>
                 <button id="pauseButton" disabled>Pause</button>
-                <button id="stopButton" disabled>Stop</button>
+                <button id="stopButton" >Stop</button>
             </div>
           </div>
         </div>
@@ -80,16 +80,16 @@
 
             <h2>Practice speaking with our suggested prompts
                 - or import your own Quizlet cue cards</h2>
-                
-                <form>
+
+                <!--<form>-->
                     <div class="form-group">
                       <input type="quizlet" class="form-control" id="quizletForm" aria-describedby="quizletHelp" placeholder="eg/ https://quizlet.com/360944174/speech-helper/">
                       <small id="quizletHelp" class="form-text text-muted">Your Quizlet set needs to be public</small>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-raised">Import</button>
-                </form>
+                    <button id='getQuiz' class="btn btn-primary">Import</button>
+                <!--</form>-->
 
-            <iframe src="https://quizlet.com/360944174/flashcard/embed?i=aykyl&x=1jj1" height="500" width="100%" style="border:0"></iframe>
+            <iframe src="https://quizlet.com/360944174/flashcard/embed?i=aykyl&x=1jj1" id="quizCard" height="500" width="100%" style="border:0"></iframe>
 
             <video id="myVideo" autoplay></video>
 
@@ -144,6 +144,7 @@
 
     <!-- Custom JavaScript for this theme -->
     <script src="js/scrolling-nav.js"></script>
+    <script src="js/quizlet.js"></script>
 
   </body>
 
