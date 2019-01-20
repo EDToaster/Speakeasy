@@ -69,7 +69,7 @@ video{
 }
 
 .bottom-space {
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 }
 
 .row {
@@ -82,7 +82,7 @@ video{
 }
 
 #col1{
-  background: #159588; 
+  background: #159588;
 
 
 }
@@ -111,17 +111,33 @@ video{
 
 .innercol {
   width: 50%;
- 
+
 }
 .innercol-text {
   display: flex;
   align-items: center;
-  flex-direction: column; 
+  flex-direction: column;
 }
 .navbar {
   position: sticky;
   top: 0;
 }
+
+.alignleft {
+  float: left;
+  width:33.33333%;
+  text-align:left;
+}
+.aligncenter {
+  float: left;
+  width:33.33333%;
+  text-align:center;
+}
+.alignright {
+ float: left;
+ width:33.33333%;
+ text-align:right;
+}​
 
 #plot {
   /*margin-top: 5%;*/
