@@ -81,6 +81,10 @@ video{
   width: 50%;
 }
 
+#col2 div{
+  margin: 0% 8%;
+}
+
 #col1{
   background: #159588;
 
