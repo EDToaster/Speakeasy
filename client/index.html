@@ -80,15 +80,15 @@
             <h2>Practice speaking with our suggested prompts
                 - or import your own Quizlet cue cards</h2>
 
-                <form>
+                <!--<form>-->
                     <div class="form-group">
                       <input type="quizlet" class="form-control" id="quizletForm" aria-describedby="quizletHelp" placeholder="eg/ https://quizlet.com/360944174/speech-helper/">
                       <small id="quizletHelp" class="form-text text-muted">Your Quizlet set needs to be public</small>
                     </div>
-                    <button type="submit" class="btn btn-primary">Import</button>
-                </form>
+                    <button id='getQuiz' class="btn btn-primary">Import</button>
+                <!--</form>-->
 
-            <iframe src="https://quizlet.com/360944174/flashcard/embed?i=aykyl&x=1jj1" height="500" width="100%" style="border:0"></iframe>
+            <iframe src="https://quizlet.com/360944174/flashcard/embed?i=aykyl&x=1jj1" id="quizCard" height="500" width="100%" style="border:0"></iframe>
 
             <div id="formats">Format: start recording to see sample rate</div>
 
@@ -145,6 +145,7 @@
 
     <!-- Custom JavaScript for this theme -->
     <script src="js/scrolling-nav.js"></script>
+    <script src="js/quizlet.js"></script>
 
   </body>
 

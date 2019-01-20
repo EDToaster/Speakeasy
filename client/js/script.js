@@ -6,6 +6,7 @@ let imageCtx = imageCanvas.getContext("2d");
 
 let emotions = [];
 
+
 //Add file blob to a form and post
 function postFile(file) {
     let formdata = new FormData();
