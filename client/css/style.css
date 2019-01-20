@@ -131,3 +131,11 @@ video{
   margin-left: 20%;
 }
 
+#stats{
+  align-items: center;
+  display: flex;
+}
+
+#contactus{
+  align-items: center;
+}

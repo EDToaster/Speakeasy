@@ -1,152 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <title>SpeakEasy</title>
+  <title>SpeakEasy</title>
 
-    <!-- Bootstrap core CSS -->
-    <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+  <!-- Bootstrap core CSS -->
+  <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
 
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet">
 
-    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+  <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+    integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
 
-  </head>
+</head>
 
-  <body id="page-top">
+<body id="page-top">
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">Speech Helper</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#try">Try</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-            </li>
-          </ul>
-        </div>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Speech Helper</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#try">Try</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+          </li>
+        </ul>
       </div>
-    </nav>
+    </div>
+  </nav>
 
-    <header class="bg-primary text-white">
-      <div class="container text-center">
-        <h1>Welcome to Speech Helper</h1>
-        <p class="lead">Using machine learning to improve your public speaking.</p>
-      </div>
-    </header>
+  <header class="bg-primary text-white">
+    <div class="container text-center">
+      <h1>Welcome to Speech Helper</h1>
+      <p class="lead">Using machine learning to improve your public speaking.</p>
+    </div>
+  </header>
 
-    <section id="try">
-      <div class="container bottom-space">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
+  <section id="try">
+    <div class="container bottom-space">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
 
 
-            <h2>Set your target tone</h2>
-            <p>
-                <div style="float:left"> Negative </div>
-                <div style="float:right"> Positive </div>
-                <div class="slidecontainer">
-                    <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-                </div>
-            </p>
-            <div id="controls">
-                <button id="recordButton">Record</button>
-                <button id="pauseButton" disabled>Pause</button>
-                <button id="stopButton" >Stop</button>
+          <h2>Set your target tone</h2>
+          <p>
+            <div style="float:left"> Negative </div>
+            <div style="float:right"> Positive </div>
+            <div class="slidecontainer">
+              <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
             </div>
+          </p>
+          <div id="controls">
+            <button id="recordButton">Record</button>
+            <button id="pauseButton" disabled>Pause</button>
+            <button id="stopButton">Stop</button>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
 
-            <h2>Practice speaking with our suggested prompts
-                - or import your own Quizlet cue cards</h2>
+          <h2>Practice speaking with our suggested prompts - or import your own Quizlet cue cards</h2>
 
-                <!--<form>-->
-                    <div class="form-group">
-                      <input type="quizlet" class="form-control" id="quizletForm" aria-describedby="quizletHelp" placeholder="eg/ https://quizlet.com/360944174/speech-helper/">
-                      <small id="quizletHelp" class="form-text text-muted">Your Quizlet set needs to be public</small>
-                    </div>
-                    <button id='getQuiz' class="btn btn-primary">Import</button>
-                <!--</form>-->
-
-            <iframe src="https://quizlet.com/360944174/flashcard/embed?i=aykyl&x=1jj1" id="quizCard" height="500" width="100%" style="border:0"></iframe>
-
-            <div id="formats">Format: start recording to see sample rate</div>
-
-            <video id="myVideo" autoplay></video>
-
+          <!--<form>-->
+          <div class="form-group">
+            <input type="quizlet" class="form-control" id="quizletForm" aria-describedby="quizletHelp" placeholder="eg/ https://quizlet.com/360944174/speech-helper/">
+            <small id="quizletHelp" class="form-text text-muted">Your Quizlet set needs to be public</small>
           </div>
+          <button id='getQuiz' class="btn btn-primary">Import</button>
+          <!--</form>-->
+
+          <iframe src="https://quizlet.com/360944174/flashcard/embed?i=aykyl&x=1jj1" id="quizCard" height="500" width="100%" style="border:0"></iframe>
+
+          <div id="formats">Format: start recording to see sample rate</div>
+
+          <video id="myVideo" autoplay></video>
+
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="services" class="bg-light">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <h2>Services we offer</h2>
-            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut optio velit inventore, expedita quo laboriosam possimus ea consequatur vitae, doloribus consequuntur ex. Nemo assumenda laborum vel, labore ut velit dignissimos.</p>
-          </div>
+  <section id="services" class="bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2>Services we offer</h2>
+          <p class="lead">SpeakEasy provides a comphrensive way for people to practice their public speaking skills. Whether that be for
+            tone and sentiment tracking, or through our easy to use interface SpeakEasy aims to make the daunting task of
+            speaking in front of others a little less scary!
+          </p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="contact">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <h2>Contact us</h2>
-            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
-          </div>
+  <section id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2>Contact us</h2>
+          <p class="lead" id="contactus">
+            Hey! If you want to reach out to us message us through our GitHub accounts! We look forward to hearing from you!
+            <br>
+
+            <p style="text-align:center">
+              <!-- Place this tag where you want the button to render. -->
+              <a class="github-button" href="https://github.com/EDToaster" data-size="large" aria-label="Follow @EDToaster on GitHub">Follow @EDToaster</a>
+              <a class="github-button" href="https://github.com/linwen-h" data-size="large" aria-label="Follow @linwen-h on GitHub">Follow @linwen-h</a>
+              <!-- Place this tag where you want the button to render. -->
+              <a class="github-button" href="https://github.com/MuradAkh" data-size="large" aria-label="Follow @MuradAkh on GitHub">Follow @MuradAkh</a>
+              <!-- Place this tag where you want the button to render. -->
+              <a class="github-button" href="https://github.com/liujennifer" data-size="large" aria-label="Follow @liujennifer on GitHub">Follow @liujennifer</a>
+            </p>
+          </p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="py-5 bg-dark">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Speech Helper 2019</p>
-      </div>
-      <!-- /.container -->
-    </footer>
-
-
-    <!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
-    <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/audio.js"></script>
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; SpeakEasy 2019</p>
+    </div>
+    <!-- /.container -->
+  </footer>
 
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
+  <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/audio.js"></script>
 
-    <!-- Plugin JavaScript -->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom JavaScript for this theme -->
-    <script src="js/scrolling-nav.js"></script>
-    <script src="js/quizlet.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  </body>
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom JavaScript for this theme -->
+  <script src="js/scrolling-nav.js"></script>
+  <script src="js/quizlet.js"></script>
+
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+</body>
 
 </html>
