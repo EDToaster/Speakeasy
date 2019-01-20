@@ -69,7 +69,7 @@ video{
 }
 
 .bottom-space {
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 }
 
 .row {
@@ -81,13 +81,14 @@ video{
   width: 50%;
 }
 
-#col1{
-  background: #159588; 
-
-
+#col2 div{
+  margin: 0% 8%;
 }
 
-#col2{ 
+#col1{
+  background: #159588;
+
+
 }
 
 .whitebg{
@@ -114,23 +115,40 @@ video{
 
 .innercol {
   width: 50%;
- 
+
 }
 .innercol-text {
   display: flex;
   align-items: center;
-  flex-direction: column; 
+  flex-direction: column;
 }
 .navbar {
   position: sticky;
   top: 0;
 }
 
+.alignleft {
+  float: left;
+  width:33.33333%;
+  text-align:left;
+}
+.aligncenter {
+  float: left;
+  width:33.33333%;
+  text-align:center;
+}
+.alignright {
+ float: left;
+ width:33.33333%;
+ text-align:right;
+}​
+
 #plot {
   /*margin-top: 5%;*/
   margin-left: 20%;
 }
 
+<<<<<<< HEAD
 #stats{
   align-items: center;
   display: flex;
@@ -138,4 +156,8 @@ video{
 
 #contactus{
   align-items: center;
+=======
+.cardlist {
+  margin: 1% 5%;
+>>>>>>> 94db82fa6bf36924a31f971eabee5aab11b738e3
 }

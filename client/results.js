@@ -24,7 +24,7 @@ let pics = info.images;
 let imageData = [];
 
 pics.forEach((pic) => {
-        if ((pic !== [])) {
+        if (pic.length != 0) {
             let p = pic[0].emotions;
             imageData.push(p);
         }
@@ -32,36 +32,25 @@ pics.forEach((pic) => {
 );
 
 plot(imageData);
-
+quickStats(audio[0].filedata, imageData);
 
 audio[0].filedata.forEach(snt => {
 
     let card = document.createElement("div");
     card.className = "card";
-    card.setAttribute("style", "margin-bottom: 15px; margin-left: 10px; margin-right: 10px");
+    card.setAttribute("style", "margin-bottom: 15px; margin-left: 10px; margin-right: 10px;" + (Math.abs(snt.score * snt.magnitude - info.slider) > 0.4 ? "border: 5px solid rgb(255, 120, 120);" : ""));
 
     let body = document.createElement("div");
     body.className = "card-body";
 
     let content = document.createElement("div");
     content.className = "tab-content card-text text-dark";
-    content.innerText = snt.sentence + "    " + (snt.score * snt.magnitude);
+    content.innerText = snt.sentence;
     body.setAttribute("style", colour_from_score(snt.score * snt.magnitude));
 
     body.append(content);
     card.append(body);
-    document.getElementById('test').append(card);
-    if (Math.abs(snt.score * snt.magnitude - info.slider) > 0.4) {
-        let card2 = document.createElement("div");
-        card2.setAttribute("style", "margin-bottom: 15px; margin-left: 10px; margin-right: 10px");
-
-        card2.className = "card";
-        card2.innerHTML = card.innerHTML;
-        document.getElementById('offtarget').append(card2);
-
-
-    }
-
+    document.getElementById('total').append(card);
 });
 
 
@@ -73,6 +62,46 @@ function transpose(a) {
     });
 }
 
+
+function quickStats(sents, emotions) {
+    let outputSentences = [];
+    sents.forEach(s => {
+        outputSentences.push({sentence: s.sentence, score: s.magnitude * s.score})
+    });
+    console.log(JSON.stringify({
+        sentences: outputSentences,
+        emotions: emotions,
+        tone_target: info.slider,
+        time_target: 1,
+        time: 1
+    }));
+    fetch("https://toastytoast.lib.id/speakeasy@1.0.1/",
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                // "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: JSON.stringify({
+                sentences: outputSentences,
+                emotions: emotions,
+                tone_target: info.slider,
+                time_target: 1,
+                time: 1
+            })
+        })
+        .then(resp => resp.json())
+        .then(displayQuicks)
+        .catch(err => console.error(err))
+
+}
+
+function displayQuicks(data) {
+    document.getElementById('time_response').innerText = data['time_response'];
+    document.getElementById('speed_response').innerText = data['speed_response'];
+    document.getElementById('emotion_response').innerText = data['emotion_response'];
+    document.getElementById('tone_response').innerText = data['tone_response'];x
+}
 
 function plot(input) {
     let na = Array.apply(null, {length: input.length}).map(Number.call, Number);
@@ -112,15 +141,6 @@ function plot(input) {
             b: 5,
             t: 30,
             pad: 4
-        },
-        title: {
-            text: 'Image Emotional Analysis',
-            font: {
-                family: 'Courier New, monospace',
-                size: 24
-            },
-            xref: 'paper',
-            x: 0.05,
         },
 
         xaxis: {
