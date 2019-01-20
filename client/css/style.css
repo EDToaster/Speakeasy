@@ -26,6 +26,7 @@ video, canvas {
 
 video{
     max-height: 420px;
+    width:100%;
 }
 
  /* TARGET SLIDERS */

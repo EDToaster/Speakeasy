@@ -207,12 +207,12 @@ function timer(){
       var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
       // Display the result in the element with id="timer"
-      document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
+      document.getElementById("timer").innerHTML = "Target time remaining:  " + minutes + "m " + seconds + "s ";
 
       // If the count down is finished, write some text
       if (distance < 0) {
         clearInterval(x);
-        document.getElementById("demo").innerHTML = "Target time reached";
+        document.getElementById("timer").innerHTML = "Target time reached";
       }
     }, 1000);
 }
