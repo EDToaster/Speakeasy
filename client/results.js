@@ -75,7 +75,7 @@ function quickStats(sents, emotions) {
         time_target: 1,
         time: 1
     }));
-    fetch("https://toastytoast.lib.id/speakeasy@1.0.1/",
+    fetch("https://toastytoast.lib.id/speakeasy@1.0.2/",
         {
             method: "POST",
             headers: {
@@ -97,10 +97,11 @@ function quickStats(sents, emotions) {
 }
 
 function displayQuicks(data) {
-    document.getElementById('time_response').innerText = data['time_response'];
-    document.getElementById('speed_response').innerText = data['speed_response'];
-    document.getElementById('emotion_response').innerText = data['emotion_response'];
-    document.getElementById('tone_response').innerText = data['tone_response'];x
+    document.getElementById('response').innerText = data['time_response'] + " " +  data['speed_response'] + " " +  data['emotion_response'] + " " +  data['tone_response'] ;
+    // document.getElementById('time_response').innerText = data['time_response'];
+    // document.getElementById('speed_response').innerText = data['speed_response'];
+    // document.getElementById('emotion_response').innerText = data['emotion_response'];
+    // document.getElementById('tone_response').innerText = data['tone_response'];
 }
 
 function plot(input) {
