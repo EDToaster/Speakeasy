@@ -81,6 +81,10 @@ video{
   width: 50%;
 }
 
+#col2 div{
+  margin: 0% 8%;
+}
+
 #col1{
   background: #159588;
 
@@ -144,6 +148,15 @@ video{
   margin-left: 20%;
 }
 
+#stats{
+  align-items: center;
+  display: flex;
+}
+
+#contactus{
+  align-items: center;
+}
+
 .cardlist {
-  margin: 1% 5%;
+  margin: 1% 3%;
 }

@@ -32,12 +32,13 @@ pics.forEach((pic) => {
 );
 
 plot(imageData);
+quickStats(audio[0].filedata, imageData);
 
 audio[0].filedata.forEach(snt => {
 
     let card = document.createElement("div");
     card.className = "card";
-    card.setAttribute("style", "margin-bottom: 15px; margin-left: 10px; margin-right: 10px;" + (Math.abs(snt.score * snt.magnitude - info.slider) > 0.4 ? "border: 5px solid rgb(255, 120, 120);" : ""));
+    card.setAttribute("style", (Math.abs(snt.score * snt.magnitude - info.slider) > 0.4 ? "border: 5px solid rgb(255, 120, 120);" : ""));
 
     let body = document.createElement("div");
     body.className = "card-body";
@@ -61,6 +62,47 @@ function transpose(a) {
     });
 }
 
+
+function quickStats(sents, emotions) {
+    let outputSentences = [];
+    sents.forEach(s => {
+        outputSentences.push({sentence: s.sentence, score: s.magnitude * s.score})
+    });
+    console.log(JSON.stringify({
+        sentences: outputSentences,
+        emotions: emotions,
+        tone_target: info.slider,
+        time_target: 1,
+        time: 1
+    }));
+    fetch("https://toastytoast.lib.id/speakeasy@1.0.2/",
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                // "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: JSON.stringify({
+                sentences: outputSentences,
+                emotions: emotions,
+                tone_target: info.slider,
+                time_target: 1,
+                time: 1
+            })
+        })
+        .then(resp => resp.json())
+        .then(displayQuicks)
+        .catch(err => console.error(err))
+
+}
+
+function displayQuicks(data) {
+    document.getElementById('response').innerText = data['time_response'] + " " +  data['speed_response'] + " " +  data['emotion_response'] + " " +  data['tone_response'] ;
+    // document.getElementById('time_response').innerText = data['time_response'];
+    // document.getElementById('speed_response').innerText = data['speed_response'];
+    // document.getElementById('emotion_response').innerText = data['emotion_response'];
+    // document.getElementById('tone_response').innerText = data['tone_response'];
+}
 
 function plot(input) {
     let na = Array.apply(null, {length: input.length}).map(Number.call, Number);
