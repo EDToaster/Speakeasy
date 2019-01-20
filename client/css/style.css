@@ -148,7 +148,6 @@ video{
   margin-left: 20%;
 }
 
-<<<<<<< HEAD
 #stats{
   align-items: center;
   display: flex;
@@ -156,8 +155,8 @@ video{
 
 #contactus{
   align-items: center;
-=======
+}
+
 .cardlist {
-  margin: 1% 5%;
->>>>>>> 94db82fa6bf36924a31f971eabee5aab11b738e3
+  margin: 1% 3%;
 }
