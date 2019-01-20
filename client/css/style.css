@@ -87,9 +87,6 @@ video{
 
 }
 
-#col2{ 
-}
-
 .whitebg{
   color: #159588;
 }
@@ -131,3 +128,6 @@ video{
   margin-left: 20%;
 }
 
+.cardlist {
+  margin: 1% 5%;
+}
