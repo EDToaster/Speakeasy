@@ -102,7 +102,7 @@ video{
 }
 
 #page-top {
-  height: 100vh;
+  /*height: 100vh;*/
   min-height: 100vh;
 }
 
@@ -141,3 +141,8 @@ video{
  width:33.33333%;
  text-align:right;
 }​
+
+#plot {
+  /*margin-top: 5%;*/
+  margin-left: 20%;
+}
