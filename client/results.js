@@ -73,9 +73,9 @@ function quickStats(sents, emotions) {
         emotions: emotions,
         tone_target: info.slider,
         time_target: 1,
-        time: 1
+        time: 0.1
     }));
-    fetch("https://toastytoast.lib.id/speakeasy@1.0.2/",
+    fetch("https://toastytoast.lib.id/speakeasy@1.0.3/",
         {
             method: "POST",
             headers: {
@@ -86,8 +86,8 @@ function quickStats(sents, emotions) {
                 sentences: outputSentences,
                 emotions: emotions,
                 tone_target: info.slider,
-                time_target: 1,
-                time: 1
+                time_target: info.time,
+                time: info.time_target
             })
         })
         .then(resp => resp.json())

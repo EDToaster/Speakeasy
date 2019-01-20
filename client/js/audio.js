@@ -18,7 +18,7 @@ recordButton.addEventListener("click", startRecording);
 stopButton.addEventListener("click", stopRecording);
 pauseButton.addEventListener("click", pauseRecording);
 
-
+var countDownDate;
 let interval = null;
 
 function sendPhotos() {
@@ -190,8 +190,8 @@ function createDownloadLink(blob) {
 }
 
 function timer(){
-    var target_minutes = document.getElementById('time_target').value
-    var countDownDate = new Date().getTime() + target_minutes*1000*60;
+    var target_minutes = document.getElementById('time_target').value;
+    countDownDate = new Date().getTime() + target_minutes*1000*60;
     // var countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
         // Update the count down every 1 second
     var x = setInterval(function() {
@@ -218,7 +218,12 @@ function timer(){
 }
 
 function sendAudio(blob) {
+    var target_minutes = document.getElementById('time_target').value;
     var xhr = new XMLHttpRequest();
+    var now = new Date().getTime();
+    var minutes = Math.floor(((target_minutes - (now - countDownDate)) % (1000 * 60 * 60)) / (1000 * 60));
+
+
     xhr.onload = function (e) {
         if (this.readyState === 4) {
             console.log("Server returned: ", e.target.responseText);
@@ -226,6 +231,8 @@ function sendAudio(blob) {
                 audio: e.target.responseText,
                 images: emotions,
                 slider: getSlidValue(),
+                time: minutes,
+                time_target: target_minutes
             }));
             emotions = [];
 
