@@ -32,6 +32,7 @@ pics.forEach((pic) => {
 );
 
 plot(imageData);
+quickStats(audio[0].filedata, imageData);
 
 audio[0].filedata.forEach(snt => {
 
@@ -61,6 +62,46 @@ function transpose(a) {
     });
 }
 
+
+function quickStats(sents, emotions) {
+    let outputSentences = [];
+    sents.forEach(s => {
+        outputSentences.push({sentence: s.sentence, score: s.magnitude * s.score})
+    });
+    console.log(JSON.stringify({
+        sentences: outputSentences,
+        emotions: emotions,
+        tone_target: info.slider,
+        time_target: 1,
+        time: 1
+    }));
+    fetch("https://toastytoast.lib.id/speakeasy@1.0.1/",
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                // "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: JSON.stringify({
+                sentences: outputSentences,
+                emotions: emotions,
+                tone_target: info.slider,
+                time_target: 1,
+                time: 1
+            })
+        })
+        .then(resp => resp.json())
+        .then(displayQuicks)
+        .catch(err => console.error(err))
+
+}
+
+function displayQuicks(data) {
+    document.getElementById('time_response').innerText = data['time_response'];
+    document.getElementById('speed_response').innerText = data['speed_response'];
+    document.getElementById('emotion_response').innerText = data['emotion_response'];
+    document.getElementById('tone_response').innerText = data['tone_response'];x
+}
 
 function plot(input) {
     let na = Array.apply(null, {length: input.length}).map(Number.call, Number);
