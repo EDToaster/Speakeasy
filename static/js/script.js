@@ -12,7 +12,7 @@ function postFile(file) {
     let formdata = new FormData();
     formdata.append("image", file);
     let xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:5000/images', true);
+    xhr.open('POST', './images', true);
     xhr.onload = function () {
         if (this.status === 200) {
             console.log(this.response);
@@ -54,4 +54,3 @@ window.onload = function () {
         });
 
 };
-

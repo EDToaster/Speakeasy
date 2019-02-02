@@ -1,22 +1,55 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from google.cloud import vision, speech, language
 from google.cloud.speech import enums
 from google.cloud.language import enums
+from google.oauth2 import service_account
+import os
+import json
 
 from PIL import Image, ImageDraw
 import base64
 
 import wave
 
-app = Flask(__name__)
+# Read env data
+credentials_raw = os.environ.get('GOOGLE_APPLICATION_CREDENTIALS')
 
-vision_client = vision.ImageAnnotatorClient()
-speech_client = speech.SpeechClient()
-language_client = language.LanguageServiceClient()
+# Generate credentials
+service_account_info = json.loads(credentials_raw)
+credentials = service_account.Credentials.from_service_account_info(
+    service_account_info)
+
+
+app = Flask(__name__, static_url_path='/static', static_folder='/static')
+
+vision_client = vision.ImageAnnotatorClient(credentials=credentials)
+speech_client = speech.SpeechClient(credentials=credentials)
+language_client = language.LanguageServiceClient(credentials=credentials)
+
+
+@app.route('/')
+def home():
+    return send_from_directory('static', 'index.html')
+
+
+@app.route('/js/<path:path>')
+def send_js(path):
+    return send_from_directory('static/js', path)
+
+
+@app.route('/css/<path:path>')
+def send_css(path):
+    return send_from_directory('static/css', path)
+
+
+@app.route('/result.html')
+def results():
+    return send_from_directory('static', 'result.html')
+
+
 
 @app.route('/images', methods=['POST'])
 def process_images():
-
     files = request.files.to_dict()
 
     to_return = []
@@ -30,11 +63,9 @@ def process_images():
 
         response = vision_client.face_detection(image=image)
 
-
         faces = response.face_annotations
 
         for face in faces:
-
             joy = face.joy_likelihood
             sorrow = face.sorrow_likelihood
             anger = face.anger_likelihood
@@ -43,15 +74,14 @@ def process_images():
             print(f"{joy}, {sorrow}, {anger}, {surprise}")
 
             to_return.append({'filename': file.filename,
-                          'emotions': [joy, sorrow, anger, surprise]})
+                              'emotions': [joy, sorrow, anger, surprise]})
 
     return jsonify(to_return)
 
 
 @app.route('/audio', methods=['POST'])
 def process_audio():
-
-    files = request.files.to_dict() 
+    files = request.files.to_dict()
 
     to_return = []
 
@@ -80,14 +110,16 @@ def process_audio():
 
             filedata["filedata"].append(
                 {
-                    "sentence": text, 
-                    "score": annotations.document_sentiment.score, 
+                    "sentence": text,
+                    "score": annotations.document_sentiment.score,
                     "magnitude": annotations.document_sentiment.magnitude
                 }
             )
 
-        to_return.append(filedata) 
-
-
+        to_return.append(filedata)
 
     return jsonify(to_return)
+
+
+if __name__ == '__main__':
+    app.run()
