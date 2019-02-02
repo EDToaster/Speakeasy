@@ -2,17 +2,29 @@ from flask import Flask, request, jsonify, send_from_directory
 from google.cloud import vision, speech, language
 from google.cloud.speech import enums
 from google.cloud.language import enums
+from google.oauth2 import service_account
+import os
+import json
 
 from PIL import Image, ImageDraw
 import base64
 
 import wave
 
+# Read env data
+credentials_raw = os.environ.get('GOOGLE_APPLICATION_CREDENTIALS')
+
+# Generate credentials
+service_account_info = json.loads(credentials_raw)
+credentials = service_account.Credentials.from_service_account_info(
+    service_account_info)
+
+
 app = Flask(__name__, static_url_path='/static', static_folder='/static')
 
-vision_client = vision.ImageAnnotatorClient()
-speech_client = speech.SpeechClient()
-language_client = language.LanguageServiceClient()
+vision_client = vision.ImageAnnotatorClient(credentials=credentials)
+speech_client = speech.SpeechClient(credentials=credentials)
+language_client = language.LanguageServiceClient(credentials=credentials)
 
 
 @app.route('/')
@@ -30,9 +42,9 @@ def send_css(path):
     return send_from_directory('static/css', path)
 
 
-@app.route('/results')
+@app.route('/result.html')
 def results():
-    return send_from_directory('static', 'results.html')
+    return send_from_directory('static', 'result.html')
 
 
 

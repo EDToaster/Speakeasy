@@ -243,6 +243,6 @@ function sendAudio(blob) {
     };
     var fd = new FormData();
     fd.append("audio_data", blob, "sound.wav");
-    xhr.open("POST", "http://localhost:5000/audio", true);
+    xhr.open("POST", "./audio", true);
     xhr.send(fd);
 }

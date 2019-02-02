@@ -1,2 +1,2 @@
 run: server.py
-	FLASK_APP=server.py GOOGLE_APPLICATION_CREDENTIALS="./credentials.json" python3 -m flask run
+	 GOOGLE_APPLICATION_CREDENTIALS="$(< credentials.json)" gunicorn app:app
