@@ -10,6 +10,7 @@ google-cloud-speech==0.36.3
 google-cloud-vision==0.35.2
 googleapis-common-protos==1.5.6
 grpcio==1.18.0
+gunicorn==19.9.0
 idna==2.8
 itsdangerous==1.1.0
 Jinja2==2.10
